@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.data{
+  min-height: 65px;
+  padding-top: 18px !important;
+}
+.link{
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+}
+.link:hover{
+  color: white;
+}
+.form{
+  margin-top: 30px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  padding: 5px 15px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
