@@ -1,10 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {
+  deleteStudentInCourse,
   getCourseById,
   getStudentsByCourseId,
 } from "../services/CourseService";
 import { Link } from "react-router-dom";
+import Point from "../components/Point";
 
 function CourseInfo() {
   let index = 1;
@@ -14,6 +16,11 @@ function CourseInfo() {
     credit: "",
   });
   const [students, setStudents] = useState([]);
+  const handleDelete = (msv) => {
+    deleteStudentInCourse(course.id,msv)
+      .then(setStudents(students.filter((student) => student[0].msv !== msv)))
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getCourseById(course.id)
@@ -24,17 +31,12 @@ function CourseInfo() {
       .catch((err) => console.log(err));
   }, []);
 
+
   return (
     <div>
       <Link to="/" className="link btn btn-primary mt-4">
         <i class="fa-solid fa-left-long me-3"></i>
         <span>Back to home</span>
-      </Link>
-      <Link
-        to="/courses/update"
-        className="link btn btn-success mt-4 ms-4"
-      >
-        <span>Cập nhật điểm</span>
       </Link>
       <Link to="/courses/add" className="link btn btn-success mt-4 ms-4">
         <span>Thêm sinh viên</span>
@@ -51,15 +53,18 @@ function CourseInfo() {
               <th>Ma Sinh Vien</th>
               <th>Ho va ten</th>
               <th>Diem</th>
+              
+              <th style={{maxWidth:"10px"}}>Delete</th>
             </tr>
           </thead>
           <tbody>
             {students.map((student) => (
               <tr>
                 <td>{index++}</td>
-                <td>{student.msv}</td>
-                <td>{student.name}</td>
-                <td>{"todo"}</td>
+                <td>{student[0].msv}</td>
+                <td>{student[0].name}</td>
+                <td><Point courseId={course.id} msv={student[0].msv} point={student[1]}></Point></td>
+                <td className="icon red" onClick={() => handleDelete(student[0].msv)}><i class="fa-solid fa-trash-can icon"></i></td>
               </tr>
             ))}
           </tbody>

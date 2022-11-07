@@ -95,5 +95,10 @@ public class StudentServiceImpl implements StudentService{
         }
         return arr;
     }
+
+    @Override
+    public List<Integer> getAllMsv() {
+        return studentRepository.getAllMsv();
+    }
     
 }

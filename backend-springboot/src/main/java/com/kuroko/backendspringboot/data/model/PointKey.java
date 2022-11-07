@@ -24,7 +24,13 @@ public class PointKey implements Serializable{
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
-
+    public PointKey() {
+    }
+    
+    public PointKey(int studentId, int courseId) {
+        this.studentId = studentId;
+        this.courseId = courseId;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;

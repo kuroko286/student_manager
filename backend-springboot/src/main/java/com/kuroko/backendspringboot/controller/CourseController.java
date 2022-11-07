@@ -4,19 +4,23 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kuroko.backendspringboot.data.model.Course;
-import com.kuroko.backendspringboot.data.model.Student;
+import com.kuroko.backendspringboot.data.payload.request.PointReq;
 import com.kuroko.backendspringboot.service.CourseService;
 import com.kuroko.backendspringboot.service.PointService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "/api/courses")
 public class CourseController {
     @Autowired
@@ -38,7 +42,23 @@ public class CourseController {
         return null;
     }
     @GetMapping(path = "{id}/students")
-    public List<Student> findStudentByCourseId(@PathVariable("id") int id){
+    public List<Object[]> findStudentByCourseId(@PathVariable("id") int id){
         return pointService.getStudentsOfCourse(id);
+    }
+    @PostMapping(path = "{id}/students/{msv}")
+    public ResponseEntity<?> updateStudentPoint(@PathVariable("id") int id,@PathVariable("msv") int msv,@RequestBody PointReq newPoint){
+        return pointService.updateStudentPoint(newPoint.getPoint(),id, msv);
+    }
+    @DeleteMapping(path = "{id}/students/{msv}")
+    public ResponseEntity<?> deleteStudentPoint(@PathVariable("id") int id,@PathVariable("msv") int msv){
+        return pointService.deleteStudentPoint(id, msv);
+    }
+    @GetMapping(path = "{id}/students/msv")
+    public List<Integer> getMsvByCourse(@PathVariable("id") int id){
+        return pointService.getMsvByCourse(id);
+    }
+    @GetMapping(path = "{id}/students/{msv}")
+    public ResponseEntity<?> isStudentInCourse(@PathVariable("id") int id,@PathVariable("msv") int msv){
+        return pointService.isStudentInCourse(id,msv);
     }
 }

@@ -34,3 +34,6 @@ export const getGpaOfStudent = (msv) => {
 export const getGpaOfAllStudent = () => {
   return axios.get(STUDENT_BASE_URL + "/gpa");
 }
+export const getAllMsv = () => {
+  return axios.get(STUDENT_BASE_URL + "/msv");
+}

@@ -22,7 +22,6 @@ function StudentUpdateForm() {
             [event.target.name]:event.target.value,
           }
         })
-        //console.log(student);
       }
 
     const [student,setStudent] = useState({

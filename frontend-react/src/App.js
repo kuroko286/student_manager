@@ -6,10 +6,7 @@ import StudentForm from "./pages/StudentForm";
 import StudentUpdateForm from "./pages/StudentUpdateForm";
 import StudentView from "./pages/StudentView";
 import CourseInfo from "./pages/CourseInfo";
-import UpdateStudentPoint from "./pages/UpdateStudentPoint";
-import DangKyHoc from "./pages/DangKyHoc";
 import ThemSinhVien from "./pages/ThemSinhVien";
-import UpdateCoursePoint from "./pages/UpdateCoursePoint";
 
 function App() {
   return (
@@ -23,9 +20,6 @@ function App() {
           <Route path="/courses" element={<Courses></Courses>}></Route>
           <Route path="/courses/info" element={<CourseInfo></CourseInfo>}></Route>
           <Route path="/courses/add" element={<ThemSinhVien></ThemSinhVien>}></Route>
-          <Route path="/courses/update" element={<UpdateCoursePoint></UpdateCoursePoint>}></Route>
-          <Route path="/update-student-point" element={<UpdateStudentPoint></UpdateStudentPoint>}></Route>
-          <Route path="/dang-ky-hoc" element={<DangKyHoc></DangKyHoc>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

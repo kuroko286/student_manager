@@ -16,4 +16,5 @@ public interface StudentService {
     List<Course> findAllCourse(int msv);
     double getGpaOfStudent(int msv);
     double[] getGpaOfAllStudent();
+    List<Integer> getAllMsv();
 }

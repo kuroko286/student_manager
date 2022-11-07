@@ -9,12 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import com.kuroko.backendspringboot.data.model.Point;
 import com.kuroko.backendspringboot.data.model.PointKey;
-import com.kuroko.backendspringboot.data.model.Student;
 
 @Repository
 public interface PointRepository extends JpaRepository<Point,PointKey>{
     @Query("SELECT p.course,p.point from Point p where p.student.msv=:msv")
     List<Object[]> getCoursesOfStudent(@Param("msv") int msv);
-    @Query("select p.student from Point p where p.course.id=:id")
-    List<Student> getStudentByCourse(@Param("id") int id);
+    @Query("select p.student,p.point from Point p where p.course.id=:id")
+    List<Object[]> getStudentByCourse(@Param("id") int id);
+    @Query("select p.student.msv from Point p where p.course.id=:id")
+    List<Integer> getMsvByCourse(@Param("id") int id);
 }

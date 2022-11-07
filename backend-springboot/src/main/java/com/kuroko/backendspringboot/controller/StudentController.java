@@ -69,4 +69,8 @@ public class StudentController {
     public double[] getGpaOfAllStudent(){
         return studentService.getGpaOfAllStudent();
     }
+    @GetMapping(path = "/msv")
+    public List<Integer> getAllMsv(){
+        return studentService.getAllMsv();
+    }
 }

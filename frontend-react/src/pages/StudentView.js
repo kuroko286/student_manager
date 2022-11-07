@@ -33,12 +33,6 @@ export default function StudentView() {
         <i class="fa-solid fa-left-long me-3"></i>
         <span>Back to home</span>
       </Link>
-      <Link to="/update-student-point" className="link btn btn-success mt-4 ms-4">
-        <span>Cập nhật điểm</span>
-      </Link>
-      <Link to="/dang-ky-hoc" className="link btn btn-success mt-4 ms-4">
-        <span>Đăng ký học</span>
-      </Link>
       <p>Mã Sinh Viên: {student.msv}</p>
       <p>Họ và tên: {student.name}</p>
       <p>Ngày Sinh: {student.birthday}</p>

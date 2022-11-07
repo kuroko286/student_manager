@@ -25,6 +25,23 @@ public class Point {
     private Course course;
     private Double point;
 
+    public Point() {
+    }
+    
+
+    public Point(PointKey id, Student student, Course course, Double point) {
+        this.id = id;
+        this.student = student;
+        this.course = course;
+        this.point = point;
+    }
+
+
+    public Point(PointKey id, Double point) {
+        this.id = id;
+        this.point = point;
+    }
+
     public PointKey getId() {
         return id;
     }
