@@ -1,55 +1,55 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
-import { Link,useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { getStudentById, updateStudentById } from "../services/StudentService";
 
 function StudentUpdateForm() {
-
   const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        await updateStudentById(student.msv,student)
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
-          navigate("/");
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await updateStudentById(student.msv, student)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    navigate("/");
+  };
 
-    const handleChange = (event) => {
-        setStudent(student => {
-          return {
-            ...student,
-            [event.target.name]:event.target.value,
-          }
-        })
-      }
-
-    const [student,setStudent] = useState({
-      msv:localStorage.getItem("msv"),
-      name:"",
-      birthday:"",
-      gender:""
+  const handleChange = (event) => {
+    setStudent((student) => {
+      return {
+        ...student,
+        [event.target.name]: event.target.value,
+      };
     });
+  };
 
-    useEffect(() => {
-        getStudentById(student.msv)
-          .then(res => setStudent(res.data))
-          .catch(err => console.log(err));
-    },[]);
-  
+  const [student, setStudent] = useState({
+    msv: localStorage.getItem("msv"),
+    name: "",
+    birthday: "",
+    gender: "",
+  });
+
+  useEffect(() => {
+    getStudentById(student.msv)
+      .then((res) => setStudent(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="container-fluid" style={{ maxWidth: "872px" }}>
-      <Link to="/" className="link btn btn-primary mt-4">
-      <i class="fa-solid fa-left-long me-3"></i>
+      <Link to="/students" className="link btn mt-4 glass">
+        <i class="fa-solid fa-left-long me-3"></i>
         <span>Back to home</span>
       </Link>
 
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form glass" onSubmit={handleSubmit}>
         <div class="mb-3 mt-3">
           <label for="msv" class="form-label">
             Mã sinh viên:
           </label>
-          <input onChange={handleChange}
+          <input
+            onChange={handleChange}
             type="number"
             class="form-control"
             id="msv"
@@ -63,7 +63,8 @@ function StudentUpdateForm() {
           <label for="name" class="form-label">
             Họ tên:
           </label>
-          <input onChange={handleChange}
+          <input
+            onChange={handleChange}
             type="text"
             class="form-control"
             id="name"
@@ -76,20 +77,32 @@ function StudentUpdateForm() {
           <label for="birthday" class="form-label">
             Ngày sinh:
           </label>
-          <input onChange={handleChange} type="date" class="form-control" id="birthday" name="birthday" value={student.birthday}/>
+          <input
+            onChange={handleChange}
+            type="date"
+            class="form-control"
+            id="birthday"
+            name="birthday"
+            value={student.birthday}
+          />
         </div>
         <div class="mb-3 mt-3">
           <label for="gender" class="form-label">
             Giới tính:
           </label>
-          <select onChange={handleChange} class="form-select" name="gender" value={student.gender}>
+          <select
+            onChange={handleChange}
+            class="form-select"
+            name="gender"
+            value={student.gender}
+          >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary mb-3">
+        <button type="submit" class="submit-btn mt-3 mb-4 pt-2 pb-2 glass w-100">
           Submit
         </button>
       </form>

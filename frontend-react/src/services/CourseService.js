@@ -32,3 +32,6 @@ export const getAllMsvByCourse = (courseId) => {
 export const isStudentInCourse = (courseId,msv) => {
   return axios.get(COURSE_BASE_URL + "/" + courseId + "/students/"+msv);
 }
+export const getStudentPoint = (courseId,msv) => {
+  return axios.get(COURSE_BASE_URL + "/" + courseId + "/students/"+msv+"/point");
+}

@@ -18,4 +18,6 @@ public interface PointRepository extends JpaRepository<Point,PointKey>{
     List<Object[]> getStudentByCourse(@Param("id") int id);
     @Query("select p.student.msv from Point p where p.course.id=:id")
     List<Integer> getMsvByCourse(@Param("id") int id);
+    @Query("select p.point from Point p where p.course.id=:id and p.student.msv=:msv")
+    Integer getPointByStudentMsv(@Param("id") int id,@Param("msv") int msv);
 }

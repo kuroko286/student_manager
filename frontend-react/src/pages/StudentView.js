@@ -22,29 +22,46 @@ export default function StudentView() {
       .catch((err) => console.log(err));
 
     getCoursesByStudentId(student.msv)
-      .then((res) => {setCourses(res.data);
-      console.log(res.data)})
+      .then((res) => {
+        setCourses(res.data);
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
-      <Link to="/" className="link btn btn-primary mt-4">
+      <Link to="/students" className="link btn mt-4 mb-5 glass">
         <i class="fa-solid fa-left-long me-3"></i>
         <span>Back to home</span>
       </Link>
-      <p>Mã Sinh Viên: {student.msv}</p>
-      <p>Họ và tên: {student.name}</p>
-      <p>Ngày Sinh: {student.birthday}</p>
-      <p>Giới Tính: {student.gender}</p>
+      <h3>Thông tin chi tiết</h3>
+      <div className="student-info">
+        <p>
+          <span className="info-title">Mã Sinh Viên: </span>
+          {student.msv}
+        </p>
+        <p>
+          <span className="info-title">Họ và tên: </span>
+          {student.name}
+        </p>
+        <p>
+          <span className="info-title">Ngày Sinh: </span>
+          {student.birthday}
+        </p>
+        <p>
+          <span className="info-title">Giới Tính: </span>
+          {student.gender}
+        </p>
+      </div>
       <br />
       {courses.length === 0 ? (
-        <h2>Không có khóa học nào</h2>
+        <h3>Không có khóa học nào</h3>
       ) : (
         <div>
           <h3>Các khóa học đã tham gia</h3>
           <div className="container-fluid w-auto m-3">
-            <table className="table table-hover text-center">
+            <table className="table table-hover text-center glass">
               <thead>
                 <tr>
                   <th>STT</th>
@@ -58,7 +75,7 @@ export default function StudentView() {
                   creditSum += course[0].credit;
                   pointSum += course[1] * course[0].credit;
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="border-dark">
                       <td>{index++}</td>
                       <td>{course[0].name}</td>
                       <td>{course[0].credit}</td>
@@ -67,7 +84,7 @@ export default function StudentView() {
                   );
                 })}
 
-                <tr style={{ backgroundColor: "#333", color: "#fff" }}>
+                <tr>
                   <td
                     colSpan={2}
                     style={{ fontSize: "20px", fontWeight: "500" }}

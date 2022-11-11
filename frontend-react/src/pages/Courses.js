@@ -14,7 +14,7 @@ function Courses() {
   }
   return (
     <div className="container-fluid w-auto m-3">
-      <table className="table table-hover text-center">
+      <table className="table table-hover text-center glass">
         <thead>
           <tr>
             <th>Mã Môn Học</th>
@@ -25,12 +25,12 @@ function Courses() {
         </thead>
         <tbody>
           {courses.map((course) => (
-            <tr>
+            <tr className="border-dark">
               <td className="data">{course.id}</td>
               <td className="data">{course.name}</td>
               <td className="data">{course.credit}</td>
               <td>
-                <button onClick={() => setCourseId(course)} className="btn btn-primary">
+                <button onClick={() => setCourseId(course)} className="btn">
                   <Link to="info" className="link">
                     Xem thêm
                   </Link>

@@ -62,5 +62,9 @@ public class PointServiceImpl implements PointService{
         }
         return ResponseEntity.ok("out");
     }
+    @Override
+    public Integer getPointByStudentMsv(int id, int msv) {
+        return pointRepository.getPointByStudentMsv(id, msv);
+    }
     
 }

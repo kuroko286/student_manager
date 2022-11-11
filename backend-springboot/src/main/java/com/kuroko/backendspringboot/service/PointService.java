@@ -11,5 +11,5 @@ public interface PointService {
     ResponseEntity<?> deleteStudentPoint(int courseId,int msv);
     List<Integer> getMsvByCourse(int id);
     ResponseEntity<?> isStudentInCourse(int id, int msv);
-
+    Integer getPointByStudentMsv(int id,int msv);
 }

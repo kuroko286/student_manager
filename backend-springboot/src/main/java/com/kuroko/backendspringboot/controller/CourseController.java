@@ -61,4 +61,8 @@ public class CourseController {
     public ResponseEntity<?> isStudentInCourse(@PathVariable("id") int id,@PathVariable("msv") int msv){
         return pointService.isStudentInCourse(id,msv);
     }
+    @GetMapping(path = "{id}/students/{msv}/point")
+    public Integer getPoint(@PathVariable("id") int id,@PathVariable("msv") int msv){
+        return pointService.getPointByStudentMsv(id, msv);
+    }
 }

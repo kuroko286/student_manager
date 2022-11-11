@@ -17,7 +17,7 @@ function AddStudentLine({courseId,student}) {
     }
     
   return (
-    <li className='d-flex justify-content-between mt-4' style={{maxWidth:"300px",height:"50px"}}>
+    <li className='d-flex justify-content-between align-items-center mt-4 ps-3 pe-3 glass' style={{width:"30%", maxWidth:"450px",height:"50px"}}>
         <span>{student.msv}</span>
         <span>{student.name}</span>
         {state==="in"?<i onClick={handleDelete} class="fa-solid fa-circle-minus red icon"></i>:<i onClick={handleAdd} class="fa-solid fa-circle-plus green icon"></i>}

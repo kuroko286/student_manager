@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import AddStudentLine from '../components/AddStudentLine';
-import { getAllMsvByCourse, getCourseById, getStudentsByCourseId } from '../services/CourseService';
-import { getAllMsv, getStudents } from '../services/StudentService';
+import { getCourseById } from '../services/CourseService';
+import {getStudents } from '../services/StudentService';
+import { Link } from 'react-router-dom';
 
 function ThemSinhVien() {
 
@@ -20,7 +21,12 @@ function ThemSinhVien() {
     
   return (
     <div>
-      <ul>
+    <Link to="/courses/info" className="link btn glass mt-4">
+        <i class="fa-solid fa-left-long me-3"></i>
+        <span>Back</span>
+      </Link>
+      <h3 className='mt-5 mb-3'>Thêm/Bớt sinh viên cho khóa học</h3>
+      <ul className='course-list-student'>
         {
           students.map(student => (
             <AddStudentLine student={student} courseId={course.id}></AddStudentLine>
