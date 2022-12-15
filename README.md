@@ -1,5 +1,9 @@
 # student_manager
 ## Bài tập lớn cơ sở dữ liệu
+## Thành viên: 
+    * Lê Văn Quốc - 21020385
+    * Cao Tiến Thắng - 21020403
+    * Tẩn Minh Xuân - 20020508
 ## Frontend - React
 ## Backend - Spring Boot
 ## Database - MySQL
